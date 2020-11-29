@@ -1,0 +1,13 @@
+ # Run this in powershell to create the pod: 'kubectl apply -f pod.yaml'
+ # Check if it is running with 'kubectl get pods'
+ # ping the pod with 'kubectl logs demo'
+ # Delete the pod with 'kubectl delete -f pod.yaml'
+ apiVersion: v1
+ kind: Pod
+ metadata:
+   name: demo
+ spec:
+   containers:
+   - name: testpod
+     image: alpine:3.5
+     command: ["ping", "8.8.8.8"]
