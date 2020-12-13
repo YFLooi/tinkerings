@@ -1,0 +1,120 @@
+.title{
+    margin-top: 3.5%;
+    margin-bottom: 3.5%;
+}
+.carousel { /*Outerdiv*/
+    z-index: 0;
+    width: 100%;
+    position: relative;
+    /*Need the size of this outer box to scale with content... Otherwise, it deafutlas to zero*/
+}
+.AliceCarousel{
+    margin: 0 auto;
+    width: 85%; /*So that left-right buttons don't sit on top of the cards*/
+}
+.card {
+    background-color: white;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border: 1.5px solid gray;
+    max-width: 150px;
+}
+.card:hover {
+    border: 1.5px solid black;
+}
+.cardTitle{
+    min-height: 20%;
+}
+.cardAuthor{
+    min-height: 10%; 
+}
+.cardImage{
+    margin: 2.5% auto;
+    
+    /*Forces image to resize, but maintaining aspect ratio*/
+    display: block;
+    max-width: 90%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+}
+.carouselDivider{
+    width: 90%;
+    height: 0;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 3.5%;
+    margin-bottom: 3.5%;
+}
+/*For the <ul> of dots below the carousel*/
+.alice-carousel__dots-item{
+    border: 1px solid rgb(95, 95, 95);
+}
+
+/*Hides navigation arrow buttons and card title+author on smartphone portrait mode*/
+/*### Smartphones (portrait and landscape)(small). Tablets taken as 768-1023px ### */
+@media screen and (min-width : 0px) and (max-width : 700px){
+    .cardTitle{
+        display: none;
+    }
+    .cardAuthor{
+        display: none;
+    }
+    .prevButtonContainer{
+        display: none;
+    }
+    .nextButtonContainer{
+        display: none;
+    }
+}
+@media screen and (min-width: 701px){
+    .cardTitle{
+        display: block;
+    }
+    .cardAuthor{
+        display: block;
+    }
+    .prevButtonContainer{
+        display: table-cell;
+        position: absolute;
+        vertical-align: middle;
+        width: 24px;
+        height: 48px;
+    
+        /*Centres the button container relative to .AliceCarousel*/
+        top: 25%; bottom: 25%;
+        left: 0;
+    
+        background-image: url('./icons/ArrowBackIos.svg');
+        background-position-x: 0%; /*0 for align left , 50% for align centre*/
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: 48px;
+    }
+    .nextButtonContainer{
+        display: table-cell;
+        vertical-align: middle;
+        position: absolute;
+        width: 24px;
+        height: 48px;
+    
+        /*Centres the button container relative to .AliceCarousel*/
+        top: 25%; bottom: 25%;
+        right: 0;
+    
+        background-image: url('./icons/ArrowForwardIos.svg');
+        background-position-x: 50%; /*0 for align left , 50% for align centre*/
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: 48px;
+    }
+    .prevButtonContainer:hover {
+        border: 3.5px solid black;
+    }
+    .nextButtonContainer:hover {
+        border: 3.5px solid black;
+    }
+}
+

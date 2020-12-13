@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Greenhouse gas emission visualiser</title>
+
+    <link rel="stylesheet" href="./css/mapStyles.css">
+   
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <!--src to call API using assigned key: src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&CALL-STUFF-HERE" -->
+    <!--'&callback=initMap' passes the calls to the Maps API made with initMap() on page load. Wait, does not work when page 
+    loaded from Express backend?-->
+    <!--'&libraries=visualization' Loads up google.maps.visualisation library for heatmaps-->
+    <script type="text/javascript" async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl6RtMrpOskELXpQocWoOqZxf_qT2y69M&libraries=visualization">
+    </script>   
+    <!--Scripts to operate Google Maps API-->
+    <script type="text/javascript" src='./js/map.js'></script> 
+    <script type="text/javascript" src="./js/bundle.js"></script>
+    <!--Scripts to operate Canvas.js maps-->
+    <script type="text/javascript" src="./canvas/canvasjs.min.js"></script>
+    <script type="text/javascript" src="./js/chart.js"></script>
+    <script type='text/javascript'>
+      window.onload = function () {
+        /**
+         * Sets all checkboxes for chart element to 'checked' on page load
+         * This prevents data from being already displayed but boxes being unchecked
+         * which happens when chart first loads with pre-set data
+         */
+        let chartElementToggle = document.getElementsByName('chartElement');
+        for(let i=0; i<chartElementToggle.length; i++){
+          chartElementToggle[i].checked = true
+        }
+
+        initMap();
+        renderChart();
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class='header' style="background-color: black; color: white; padding: 10px; margin-bottom: 10px;">
+      <h2>Air pollutant emission visualiser</h2>
+    </div>
+    <!--The div element for the map -->
+    <div id='mapContainer'>
+      <div id="map"></div>  
+    </div>
+    <!--Serves as target to render <div>-s containing labels for popups-->
+    <div id='popup-content'></div>
+    
+    <div id="floating-panel">
+        <div>
+          <button type='button' class='btn btn-secondary' onclick="changeGHG()">CO2/CH4 toggle</button>
+          <!--Recentres the viewport and clears all changes by re-rendering the onload map-->
+          <button type='button' class='btn btn-secondary' onclick="initMap()">Reset map</button> 
+          <button type='button' class='btn btn-secondary' onclick="toggleHeatmap()">Heatmap on/off</button>
+          <button type='button' class='btn btn-secondary' onclick="changeGradient()">Darken background</button>
+          <button type='button' class='btn btn-secondary' onclick="changeRadius()">Change radius</button>
+          <button type='button' class='btn btn-secondary' onclick="changeOpacity()">Change opacity</button>
+        </div>
+    </div>
+    <p></p>
+    <div>
+        <p>
+            Radius and intensity of heatmap center increases with pollutant above baseline 
+        </p>
+        <p>
+            Click on markers to display additional data for each location
+        </p>
+    </div>
+    <p></p>
+    <!--Canvas.js chart-->
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div id="floating-panel">
+        <!-- Simple toggle to change chart render data to another set from a different date -->
+        <button type='button' class='btn btn-secondary' onclick="updateChart()">Update chart data</button><br>
+        <input type="checkbox" name="chartElement" value='CO2 (ppm)' checked onclick='toggleChartElements(0)'> Show CO2 &nbsp;
+        <input type="checkbox" name="chartElement" value='CH4 (ppb)' checked onclick='toggleChartElements(1)'> Show CH4 &nbsp;
+        <input type="checkbox" name="chartElement" value='T ambient (°C)' checked onclick='toggleChartElements(2)'> Show ambient temperature 
+    </div>
+    <p></p>
+    <div>Gradient palette   
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(255, 255, 255, 0);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(0, 191, 255, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(0, 127, 255, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px;background-color:rgba(0, 63, 255, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(0, 0, 255, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(0, 0, 127, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(63, 0, 91, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(127, 0, 63, 1);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgba(255, 9, 9, 0.973);'>1</div>
+        <div style='float: left; width: 20px; height: 20px; background-color:rgb(255, 214, 214);'>1</div>
+
+        <div style='float: left; width: 20px; height: 20px; background-color:rgb(255, 251, 0);'>1</div>
+    </div>
+    
+    <footer style='font-size: 20px;'>
+      <a href='page2.html'>Routing to pg2 chk</a>
+    </footer>
+  </body>
+</html>
