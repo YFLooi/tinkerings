@@ -1,0 +1,22 @@
+{
+  "name": "pug_test",
+  "version": "1.0.0",
+  "description": "Test implementation of Pug",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "YFLooi",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "json-server": "^0.16.3",
+    "pug": "^3.0.0"
+  },
+  "notes": {
+    "1":"json-server is the data source for this example",
+    "2":"Data source: https://randomuser.me/api/?results=25"
+  }
+}
