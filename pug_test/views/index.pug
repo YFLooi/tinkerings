@@ -1,0 +1,94 @@
+//- doctype html
+//- html(lang='en')
+//-  head
+//-    title Hello, World!
+//-  body
+//-    h1 Hello, World!
+
+doctype html
+html(lang='en')
+  head
+    title Staff Directory
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css')
+    style.
+      table.ui.celled img { display: inline-block; }
+      footer { margin: 35px 0 15px 0; text-align: center }
+  body
+    main#main
+    h1.ui.center.aligned.header Staff Directory
+    .ui.container
+      table.ui.celled.table.center.aligned
+        thead
+          tr
+            th Avatar
+            th First Name
+            th Last Name
+            th Email
+            th Phone
+            th City
+        tbody
+					//- Iterates over employees[] from app.js
+          each employee in employees
+            tr
+              td
+                img.ui.mini.rounded.image(src=employee.picture.thumbnail)
+              td #{employee.name.first}
+              td #{employee.name.last}
+              td #{employee.email}
+              td #{employee.phone}
+              td #{employee.location.city}
+        tfoot
+          tr
+            th(colspan='6')
+    div
+      //- Using a template to implement the above
+      h2 Doing the same as above, but using a template:
+      extends layout.pug
+
+      block content
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th Avatar
+              th First Name
+              th Last Name
+              th Email
+              th Phone
+              th City
+          tbody
+            each employee in employees
+              tr
+                td
+                  img.ui.mini.rounded.image(src=employee.picture.thumbnail)
+                td #{employee.name.first}
+                td #{employee.name.last}
+                td #{employee.email}
+                td #{employee.phone}
+                td #{employee.location.city}
+          tfoot
+            tr
+              th(colspan='6')
+    div
+      h2 Using mixins to render the table rows then putting in layout to recreate the same page
+      extends layout.pug
+      include mixins/_tableRow
+
+      block content
+        table.ui.celled.table.center.aligned
+          thead
+            tr
+              th Avatar
+              th First Name
+              th Last Name
+              th Email
+              th Phone
+              th City
+          tbody
+            //- tableRow() comes from the mixin _tableRow.pug
+            each employee in employees
+              +tableRow(employee)
+          tfoot
+            tr
+              th(colspan='6')
+    footer
+      p © #{new Date().getFullYear()} My Company
