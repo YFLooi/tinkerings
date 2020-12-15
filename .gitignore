@@ -3,4 +3,5 @@ mongo_test/node_modules
 mongo_test/client/node_modules
 nodejs_test/node_modules
 pug_test/node_modules
+typescript_test/node_modules
 
