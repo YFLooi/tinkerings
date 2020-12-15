@@ -1,2 +1,7 @@
 Tutorial ref:
 https://www.sitepoint.com/a-beginners-guide-to-pug/
+
+Note that this requires 2 windows to run the following:
+nodemon server.js 
+and
+json-server --watch db.json -p=3001 (the data source, which runs without a complete backend)

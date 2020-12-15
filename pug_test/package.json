@@ -16,7 +16,7 @@
     "pug": "^3.0.0"
   },
   "notes": {
-    "1":"json-server is the data source for this example",
-    "2":"Data source: https://randomuser.me/api/?results=25"
+    "1": "json-server is the data source for this example",
+    "2": "Data source: https://randomuser.me/api/?results=25"
   }
 }
