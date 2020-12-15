@@ -1,0 +1,16 @@
+{
+  "name": "nodejs_test",
+  "version": "1.0.0",
+  "description": "Collection of JS showing how to run basic nodejs tasks",
+  "main": "index.js",
+  "scripts": {
+    "comment": "Each of these scripts are triggered with 'npm run <scriptName>'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "Looi YF",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "1.18.9"
+  }
+}

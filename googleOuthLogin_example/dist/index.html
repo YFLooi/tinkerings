@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico?v=2" /> <!--'?v=2' makes sure this html finds the target icon-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    
+    <title>googleOAuthTest</title>
+
+    <!--For Material UI-->
+    <meta name="theme-color" content="#000000" />
+    <!--Roboto font. Designed for Material UI-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+    
+    <base target="_blank">
+
+    <!--Scripts for Google OAuth sign in-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="264618720481-jsdkhtj62lvt1agk3ejk1qec1vmtkp3b.apps.googleusercontent.com">
+    <script type="text/javascript" src="./script.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <h1>Login/logout tester</h1>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <a href="#" onclick="signOut();">Sign out</a>
+
+      <div id="userDetails"></div>
+    </div>
+  </div>
+    
+  </body>
+</html>
