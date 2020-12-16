@@ -49,5 +49,6 @@ const CompaniesSchema = new mongoose.Schema({
 // used to manipulate the data for inserting, updating, deleting and retrieving 
 // from the database collection.
 // Parameters provided: Model name, model schema, name of target mongodb collection
+// The 1st and 3rd parameter MUST be an exact match with the Collection's name in Atlas
 module.exports = mongoose.model( 
-    'Companies', CompaniesSchema, 'Companies'); 
+    'companies', CompaniesSchema, 'companies'); 
