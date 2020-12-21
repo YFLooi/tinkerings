@@ -54,7 +54,7 @@ router.post('/save_with_POST', function(req, res) {
 
 // Retrieve/read 20 db entries
 // Notice how the same find() command used in Mongo shell is used here
-router.get('/findAll', function(req, res) {
+router.get('/findTwenty', function(req, res) {
   CompaniesModel
     .find({"founded_year": {"$gt":2000}})
     .limit(20)

@@ -39,6 +39,9 @@
 
 #outputBox {
   border: 1px solid black;
+  height: 30vh;
+  margin: 20px;
+  overflow-y: scroll;
 }
 #controlButtons {
   margin: 20px;

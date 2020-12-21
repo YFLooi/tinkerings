@@ -1,16 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 
 function App() {
+  const [output, setOutput] = useState([])
+
   const findAll = () => {
-    fetch("/api/findAll", {method: "GET"})  
+    fetch("/api/findTwenty", {method: "GET"})  
       .then(async function(response){
         const data = await response.json();
   
         console.log("Results of test:");
         console.log(data);
-        document.getElementById("outputBox").innerHTML = data;
+
+        const dataDisplay = data.map((item, index, array) => {
+          return [
+            <div key={`output_${index}`}>
+              {item[`name`]}@{item[`twitter_username`]}
+            </div>
+          ]
+        })
+        setOutput([...dataDisplay]);
     })  
     .catch(function(error){
       console.log("Request failed", error)
@@ -26,7 +37,7 @@ function App() {
         Work on data from MongoDB with Mongoose
       </header>
       <div className="body">
-        <div id="outputBox"></div>
+        <div id="outputBox">{output}</div>
         <div id="controlButtons">
           <button onClick={() =>{clearMessage();}}>Clear message</button>
           <button onClick={() =>{findAll();}}>findAll</button>
