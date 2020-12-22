@@ -1,21 +1,3 @@
-// const { MongoClient } = require("mongodb");
-
-//const url = `mongodb+srv://x:<password>@sandbox.la6j1.mongodb.net/<dbname>?retryWrites=true&w=majority`;
-// const client = new MongoClient(url);
-
-// async function run(){
-//     try {
-//         await client.connect();
-//         console.log(`Connection to server established`)
-//     } catch(err) {
-//         console.log(err.stack);
-//     } finally {
-//         await client.close();
-//     }
-// }
-
-// run().catch(console.dir);
-
 const express = require('express'); 
 //parses json
 const bodyParser = require('body-parser'); 
