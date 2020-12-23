@@ -1,6 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
+import OutputBox from './outputBox.tsx';
+import ReducerExample from './reducerExample.tsx';
 import { useState } from 'react';
+import { Button, InputGroup, FormControl } from 'react-bootstrap'; 
 
 
 function App() {
@@ -181,23 +183,29 @@ function App() {
       </header>
       <div className="body">
         <div id="controlButtons">
-          <button onClick={() =>{clearMessage();}}>Clear messages</button>
-          <button onClick={() =>{findTwenty();}}>findTwenty</button>
-          <button onClick={() =>{findTwentyWithSort("ASCENDING");}}>findTwentyWithSort - ASC</button>
-          <button onClick={() =>{findTwentyWithSort("DESCENDING");}}>findTwentyWithSort - DESC</button>
+          <Button onClick={() =>{clearMessage();}}>Clear messages</Button>
+          <Button onClick={() =>{findTwenty();}}>findTwenty</Button>
+          <Button onClick={() =>{findTwentyWithSort("ASCENDING");}}>findTwentyWithSort - ASC</Button>
+          <Button onClick={() =>{findTwentyWithSort("DESCENDING");}}>findTwentyWithSort - DESC</Button>
           
         </div>
         <div id="nameInput">
           <div>Submit company name</div>
-          <div>
-            <input 
-              id="nameInputBox" type="text" placeholder="Type name..." value={name} 
-              onChange={(event)=>{handleInputChange(event)}} 
-            />
+          <div id="nameInput_input">
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text id="basic-addon1">Company name</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                aria-label="companyName"
+                id="nameInputBox" type="text" placeholder="Type name..." value={name} 
+                onChange={(event)=>{handleInputChange(event)}} 
+              />
+            </InputGroup>
           </div>
-          <div>
-            <button onClick={() =>{handleNameSubmit("GET");}}>Submit company name with GET</button>
-            <button onClick={() =>{handleNameSubmit("POST");}}>Submit company name with POST</button>
+          <div id="nameInput_buttons">
+            <Button onClick={() =>{handleNameSubmit("GET");}}>Submit company name with GET</Button>
+            <Button onClick={() =>{handleNameSubmit("POST");}}>Submit company name with POST</Button>
           </div>
         </div>
         <div id="nameLookup">
@@ -209,7 +217,7 @@ function App() {
             />
           </div>
           <div>
-            <button onClick={() =>{handleNameSubmit("nameLookup");}}>Submit</button>
+            <Button onClick={() =>{handleNameSubmit("nameLookup");}}>Submit</Button>
           </div>
         </div>
         <div id="updateYear">
@@ -227,7 +235,7 @@ function App() {
             />
           </div>
           <div>
-            <button onClick={() =>{handleNameSubmit("updateYear");}}>Submit</button>
+            <Button onClick={() =>{handleNameSubmit("updateYear");}}>Submit</Button>
           </div>
         </div>
         <div id="deleteCompany">
@@ -236,10 +244,11 @@ function App() {
             <input id="delete_idBox" type="text" placeholder="Type _id..." value={delete_id} onChange={(event)=>{handleInputChange(event)}} />
           </div>
           <div>
-            <button onClick={() =>{handleNameSubmit("deleteCompany");}}>Submit</button>
+            <Button onClick={() =>{handleNameSubmit("deleteCompany");}}>Submit</Button>
           </div>
         </div>
         <div id="outputBox">{output}</div>
+        <OutputBox output={output}></OutputBox>
       </div>
     </div>
   );

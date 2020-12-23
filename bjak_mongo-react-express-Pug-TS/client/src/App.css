@@ -47,6 +47,17 @@
   margin: 20px;
 }
 #controlButtons button{
-  width: 150px;
-  min-height: 30px;
+  margin: 10px;
+}
+
+#nameInput_input { 
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#nameInput_input div { 
+  max-width: 50%;
+}
+#nameInput_buttons button { 
+  margin: 10px;
 }
